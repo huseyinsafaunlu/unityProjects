@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class finish : MonoBehaviour
+public class obsticle : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {

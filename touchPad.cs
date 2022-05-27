@@ -6,16 +6,11 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
 
-
 public class touchPad : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
-    
     public bool isStartMoving = false;
-    float cubeSpeed = 100f;
-    float cubeVelocity = 10f;
-    [SerializeField] private Transform playerTransform;
-    [SerializeField] private Rigidbody playerRigidbody;
-
+    public float sizeX;
+    public float sizeY;
     public static touchPad instance;
     private void Awake()
     {
@@ -32,8 +27,10 @@ public class touchPad : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log("drag");
-        playerTransform.position += new Vector3(eventData.delta.x / cubeSpeed, 0, 0);
+        sizeY = eventData.delta.y/1000;
+        playerSize.instance.reSize();
+
+
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -41,4 +38,15 @@ public class touchPad : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         Debug.Log("up");
     }
 
+
+    [SerializeField] GameObject winPannel;
+    public void activateWinPannel()
+    {
+        winPannel.SetActive(true);
+    }
+
+    public void reStart()
+    {
+        SceneManager.LoadScene("SampleScene");
+    }
 }
