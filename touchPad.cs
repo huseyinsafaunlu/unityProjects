@@ -9,12 +9,12 @@ using System;
 
 public class touchPad : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
-    
+
     public bool isStartMoving = false;
     float cubeSpeed = 100f;
-    float cubeVelocity = 10f;
-    [SerializeField] private Transform playerTransform;
-    [SerializeField] private Rigidbody playerRigidbody;
+    //float cubeVelocity = 10f;
+    [SerializeField] private Transform playerBagTransform;
+
 
     public static touchPad instance;
     private void Awake()
@@ -24,7 +24,7 @@ public class touchPad : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("down");
+        
         isStartMoving = true;
     }
 
@@ -32,13 +32,13 @@ public class touchPad : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log("drag");
-        playerTransform.position += new Vector3(eventData.delta.x / cubeSpeed, 0, 0);
+        
+        playerBagTransform.position += new Vector3(eventData.delta.x / cubeSpeed, 0, 0);
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        Debug.Log("up");
+        
     }
 
 }
